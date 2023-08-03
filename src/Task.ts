@@ -36,7 +36,8 @@ export enum Priority {
 }
 
 export class TaskRegularExpressions {
-    public static readonly dateFormat = 'YYYY-MM-DD';
+    public static readonly dateFormat = 'hh:mm';
+    public static readonly timeFormat = 'hh:mm';
     public static readonly dateTimeFormat = 'YYYY-MM-DD HH:mm';
 
     // Matches indentation before a list marker (including > for potentially nested blockquotes or Obsidian callouts)

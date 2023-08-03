@@ -64,7 +64,7 @@ export const DEFAULT_SYMBOLS: DefaultTaskSerializerSymbols = {
         createdDateRegex: /➕ *(\d{4}-\d{2}-\d{2})$/u,
         scheduledDateRegex: /[⏳⌛] *(\d{4}-\d{2}-\d{2})$/u,
         dueDateRegex: /[📅📆🗓] *(\d{4}-\d{2}-\d{2})$/u,
-        doneDateRegex: /✅ *(\d{4}-\d{2}-\d{2})$/u,
+        doneDateRegex: /✅ *(\d{2}:\d{2})$/u,
         recurrenceRegex: /🔁 ?([a-zA-Z0-9, !]+)$/iu,
     },
 } as const;
@@ -139,7 +139,7 @@ export class DefaultTaskSerializer implements TaskSerializer {
                 if (!task.doneDate) return '';
                 return layout.options.shortMode
                     ? ' ' + doneDateSymbol
-                    : ` ${doneDateSymbol} ${task.doneDate.format(TaskRegularExpressions.dateFormat)}`;
+                    : ` ${doneDateSymbol} ${task.doneDate.format(TaskRegularExpressions.timeFormat)}`;
             case 'dueDate':
                 if (!task.dueDate) return '';
                 return layout.options.shortMode
